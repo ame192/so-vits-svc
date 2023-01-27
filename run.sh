@@ -1,7 +1,7 @@
 set -e
 
 speaker=llg
-stage=5
+stage=$1
 dir=dataset_tmp/$speaker
 mkdir -p $dir
 
@@ -32,8 +32,16 @@ if [ ${stage} == 5 ]; then
   mv $dir/split/*.wav dataset_raw/$speaker/
 fi
 
-python resample.py
+if [ ${stage} == 6 ] ; then
+	python resample.py
+	python preprocess_flist_config.py
+fi
+if [ ${stage} == 7 ] ; then
+	python preprocess_hubert_f0.py
+fi
+if [ ${stage} == 8 ] ; then
+	python train.py -c configs/config.json -m 32k
+fi
 
-python preprocess_flist_config.py
 
-python preprocess_hubert_f0.py
+
