@@ -24,7 +24,7 @@ def process(args):
             cmd = 'ffmpeg -i "{}" -ss {} -to {} -ac 1 -ar 32000 -f wav "{}"'.format(
                 os.path.join(idir,ifn), x0, x1, os.path.join(odir,str(fn))+'.wav'
             )
-            #os.system(cmd)
+            os.system(cmd)
             x0 = x1
 
 if __name__ == '__main__':
