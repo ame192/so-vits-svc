@@ -12,7 +12,9 @@ SoundFile>=0.10.3.post1
 starlette>=0.19.1
 tqdm==4.63.0
 scikit-maad
-tensorflow-gpu==2.3.0
-spleeter-gpu
+torch
+torchvision
+torchaudio
+spleeter==2.2.0
 
---find-links https://download.pytorch.org/whl/cu117
+--find-links https://download.pytorch.org/whl/cu116
